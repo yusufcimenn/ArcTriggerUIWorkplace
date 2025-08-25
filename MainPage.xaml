@@ -89,14 +89,15 @@
                         <Button
                             Text="Auto-Fetch"
                             Style="{StaticResource ChipButton}"
-                            HorizontalOptions="EndAndExpand" />
+                            HorizontalOptions="EndAndExpand" 
+                            Clicked="OnAutoFetchClicked"/>
                     </HorizontalStackLayout>
 
                     <!-- Hisse Sembolü -->
-                    <Label Grid.Row="1" Grid.ColumnSpan="2" Text="Stock Symbol" />
+                    <Label Grid.Row="1" Grid.ColumnSpan="2" Text="Stock Symbol"  />
                     <Picker
                         Grid.Row="2" Grid.ColumnSpan="2"
-                        Title="Select a stock">
+                        Title="Select a stock" SelectedIndexChanged="OnSymbolChanged">
                         <Picker.Items>
                             <x:String>AAPL</x:String>
                             <x:String>MSFT</x:String>
@@ -114,34 +115,34 @@
                             <ColumnDefinition Width="44" />
                         </Grid.ColumnDefinitions>
 
-                        <Entry Grid.Column="0" Placeholder="135.00" Keyboard="Numeric" />
+                        <Entry Grid.Column="0" Placeholder="135.00" Keyboard="Numeric" TextChanged="OnTriggerPriceTextChanged" />
 
-                        <Button Grid.Column="1" Text="▲" />
-                        <Button Grid.Column="2" Text="▼" />
+                        <Button Grid.Column="1" Text="▲" Clicked="OnIncreaseTriggerClicked" />
+                        <Button Grid.Column="2" Text="▼" Clicked="OnDecreaseTriggerClicked"/>
                     </Grid>
 
                     <!-- Emir Tipi -->
                     <Label Grid.Row="5" Grid.ColumnSpan="2" Text="Order Type" />
                     <HorizontalStackLayout Grid.Row="6" Grid.ColumnSpan="2" Spacing="24">
                         <HorizontalStackLayout Spacing="6">
-                            <RadioButton Content="Call Option" IsChecked="True" TextColor= "White" />
+                            <RadioButton Content="Call Option" IsChecked="True" TextColor= "White" CheckedChanged="OnCallOptionCheckedChanged"/>
                         </HorizontalStackLayout>
                         <HorizontalStackLayout Spacing="6">
-                            <RadioButton Content="Put Option" TextColor= "White"/>
+                            <RadioButton Content="Put Option" TextColor= "White" CheckedChanged="OnPutOptionCheckedChanged"/>
                         </HorizontalStackLayout>
                     </HorizontalStackLayout>
 
                     <!-- Strike ve Vade -->
                     <Label Grid.Row="7" Grid.Column="0" Text="Strike Price" />
                     <Label Grid.Row="7" Grid.Column="1" Text="Expiration" />
-                    <Picker Grid.Row="8" Grid.Column="0" Title="Strike">
+                    <Picker Grid.Row="8" Grid.Column="0" Title="Strike" SelectedIndexChanged="OnStrikeChanged">
                         <Picker.Items>
                             <x:String>130</x:String>
                             <x:String>135</x:String>
                             <x:String>140</x:String>
                         </Picker.Items>
                     </Picker>
-                    <Picker Grid.Row="8" Grid.Column="1" Title="Exp">
+                    <Picker Grid.Row="8" Grid.Column="1" Title="Exp" SelectedIndexChanged="OnExpirationChanged">
                         <Picker.Items>
                             <x:String>2025-09-20</x:String>
                             <x:String>2025-10-18</x:String>
@@ -154,7 +155,7 @@
             <!-- Pozisyon ve Hazır Tutarlar -->
             <VerticalStackLayout Spacing="10">
                 <Label Text="Position Size ($)" />
-                <Entry Placeholder="500" Keyboard="Numeric" />
+                <Entry Placeholder="500" Keyboard="Numeric" TextChanged="OnPositionTextChanged"/>
 
                 <Grid ColumnSpacing="10">
                     <Grid.ColumnDefinitions>
@@ -163,16 +164,16 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0" Text="$2,000" Style="{StaticResource ChipButton}" />
-                    <Button Grid.Column="1" Text="$5,000" Style="{StaticResource ChipButton}" />
-                    <Button Grid.Column="2" Text="$10,000" Style="{StaticResource ChipButton}" />
+                    <Button Grid.Column="0" Text="$2,000" Style="{StaticResource ChipButton}" Clicked="OnPositionPresetClicked"/>
+                    <Button Grid.Column="1" Text="$5,000" Style="{StaticResource ChipButton}" Clicked="OnPositionPresetClicked"/>
+                    <Button Grid.Column="2" Text="$10,000" Style="{StaticResource ChipButton}" Clicked="OnPositionPresetClicked"/>
                 </Grid>
             </VerticalStackLayout>
 
             <!-- Stop Loss ve prim butonlari -->
             <VerticalStackLayout Spacing="10">
-                <Label Text="Stop Loss ($)" />
-                <Entry Placeholder="130.00" Keyboard="Numeric" />
+                <Label Text="Stop Loss ($)"/>
+                <Entry Placeholder="130.00" Keyboard="Numeric" TextChanged="OnStopLossTextChanged"/>
 
                 <Grid ColumnSpacing="10">
                     <Grid.ColumnDefinitions>
@@ -181,9 +182,9 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0" Text="$0.20" Style="{StaticResource ChipButton}" />
-                    <Button Grid.Column="1" Text="$0.50" Style="{StaticResource ChipButton}" />
-                    <Button Grid.Column="2" Text="$1.00" Style="{StaticResource ChipButton}" />
+                    <Button Grid.Column="0" Text="$0.20" Style="{StaticResource ChipButton}" Clicked="OnStopLossPreset"/>
+                    <Button Grid.Column="1" Text="$0.50" Style="{StaticResource ChipButton}" Clicked="OnStopLossPreset"/>
+                    <Button Grid.Column="2" Text="$1.00" Style="{StaticResource ChipButton}" Clicked="OnStopLossPreset"/>
                 </Grid>
             </VerticalStackLayout>
 
@@ -195,7 +196,8 @@
                 FontAttributes="Bold"
                 HeightRequest="52"
                 CornerRadius="14"
-                Margin="0,6,0,10" />
+                Margin="0,6,0,10" 
+                Clicked="OnCreateOrderClicked"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
