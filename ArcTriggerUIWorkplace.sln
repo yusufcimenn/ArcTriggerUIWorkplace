@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcTriggerUIWorkplace", "ArcTriggerUIWorkplace.csproj", "{8B14C9D6-9704-47FF-B269-4FEF7C17D41B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B14C9D6-9704-47FF-B269-4FEF7C17D41B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B14C9D6-9704-47FF-B269-4FEF7C17D41B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B14C9D6-9704-47FF-B269-4FEF7C17D41B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8B14C9D6-9704-47FF-B269-4FEF7C17D41B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B14C9D6-9704-47FF-B269-4FEF7C17D41B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B14C9D6-9704-47FF-B269-4FEF7C17D41B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E7B0356-7A7F-4988-A6AF-F5A39E0B2A8D}
+	EndGlobalSection
+EndGlobal
