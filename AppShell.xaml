@@ -8,7 +8,7 @@
     Title="ArcTriggerUIWorkplace">
 
     <ShellContent
-        Title="Home"
+        Title="ArcTrigger"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 

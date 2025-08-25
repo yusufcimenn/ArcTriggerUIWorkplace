@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ArcTriggerUIWorkplace.MainPage">
+             x:Class="ArcTriggerUIWorkplace.MainPage"
+             BackgroundColor="#0E1116">
 
    <ContentPage.Resources>
         <Style TargetType="Label">
@@ -9,13 +10,13 @@
             <Setter Property="FontSize" Value="14" />
         </Style>
 
-        <!--<Style TargetType="Entry">
+        <Style TargetType="Entry">
             <Setter Property="HeightRequest" Value="44" />
             <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackgroundColor}" />
             <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
             <Setter Property="PlaceholderColor" Value="#8A8A8A" />
-            <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="Padding" Value="12,8" />
+            <!--<Setter Property="CornerRadius" Value="10" />-->
+            <!--<Setter Property="Padding" Value="12,8" />-->
         </Style>
 
         <Style TargetType="Picker">
@@ -23,9 +24,9 @@
             <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackgroundColor}" />
             <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
             <Setter Property="TitleColor" Value="#8A8A8A" />
-            <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="Padding" Value="12,8" />
-        </Style>-->
+            <!--<Setter Property="CornerRadius" Value="10" />-->
+            <!--<Setter Property="Padding" Value="12,8" />-->
+        </Style>
 
         <Style TargetType="Button">
             <Setter Property="HeightRequest" Value="44" />
@@ -123,10 +124,10 @@
                     <Label Grid.Row="5" Grid.ColumnSpan="2" Text="Order Type" />
                     <HorizontalStackLayout Grid.Row="6" Grid.ColumnSpan="2" Spacing="24">
                         <HorizontalStackLayout Spacing="6">
-                            <RadioButton Content="Call Option" IsChecked="True" />
+                            <RadioButton Content="Call Option" IsChecked="True" TextColor= "White" />
                         </HorizontalStackLayout>
                         <HorizontalStackLayout Spacing="6">
-                            <RadioButton Content="Put Option" />
+                            <RadioButton Content="Put Option" TextColor= "White"/>
                         </HorizontalStackLayout>
                     </HorizontalStackLayout>
 
