@@ -2,30 +2,28 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArcTriggerUIWorkplace.MainPage"
-             BackgroundColor="#0E1116">
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
 
-   <ContentPage.Resources>
+    <ContentPage.Resources>
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
             <Setter Property="FontSize" Value="14" />
         </Style>
 
         <Style TargetType="Entry">
-            <Setter Property="HeightRequest" Value="44" />
+            <Setter Property="HeightRequest" Value="40" />
             <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackgroundColor}" />
             <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
             <Setter Property="PlaceholderColor" Value="#8A8A8A" />
-            <!--<Setter Property="CornerRadius" Value="10" />-->
-            <!--<Setter Property="Padding" Value="12,8" />-->
+            <Setter Property="Margin" Value="12,8,8,8" />
         </Style>
 
         <Style TargetType="Picker">
-            <Setter Property="HeightRequest" Value="44" />
+            <Setter Property="HeightRequest" Value="40" />
             <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackgroundColor}" />
             <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
             <Setter Property="TitleColor" Value="#8A8A8A" />
-            <!--<Setter Property="CornerRadius" Value="10" />-->
-            <!--<Setter Property="Padding" Value="12,8" />-->
+            <Setter Property="Margin" Value="12,8,8,8" />
         </Style>
 
         <Style TargetType="Button">
@@ -36,7 +34,7 @@
         </Style>
 
         <Style x:Key="ChipButton" TargetType="Button">
-            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="HeightRequest" Value="36" />
             <Setter Property="CornerRadius" Value="10" />
             <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackgroundColor}" />
             <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
@@ -45,159 +43,183 @@
             <Setter Property="Padding" Value="12,6" />
         </Style>
 
-        <!-- Koyu tema renkleri için basit kaynaklar -->
-        <Color x:Key="PageBackgroundColor">#111418</Color>
+        <Color x:Key="PageBackgroundColor">#0E1116</Color>
         <Color x:Key="SecondaryBackgroundColor">#1B1F24</Color>
         <Color x:Key="PrimaryTextColor">#EDEDED</Color>
         <Color x:Key="CardBorderColor">#2A2F36</Color>
         <Color x:Key="AccentGreen">#25C160</Color>
     </ContentPage.Resources>
 
-    <ScrollView>
-        <VerticalStackLayout Spacing="16" Padding="20,24">
-            <!-- Başlık -->
-            <Label Text="Trading Dashboard" FontSize="24" FontAttributes="Bold" />
+    <!-- Tam ekran grid, paneli ortalar -->
+    <Grid Padding="12" HorizontalOptions="Fill" VerticalOptions="Fill">
+        <Frame WidthRequest="760"
+               HeightRequest="600"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               BackgroundColor="{DynamicResource SecondaryBackgroundColor}"
+               BorderColor="{DynamicResource CardBorderColor}"
+               CornerRadius="16"
+               HasShadow="False"
+               IsClippedToBounds="True"
+               Padding="16">
 
-            <!-- Kart -->
-            <Frame
-                Padding="16"
-                BackgroundColor="{DynamicResource SecondaryBackgroundColor}"
-                BorderColor="{DynamicResource CardBorderColor}"
-                CornerRadius="16"
-                HasShadow="False">
+            <!-- Üstte iki sütun içerik, altta CTA -->
+            <Grid RowSpacing="12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-                <Grid RowSpacing="14" ColumnSpacing="12">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+                <!-- İki sütunlu ana içerik -->
+                <Grid Grid.Row="0" ColumnSpacing="16">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <!-- Kart başlığı ve Auto-Fetch butonu -->
-                    <HorizontalStackLayout Grid.Row="0" Grid.ColumnSpan="2" Spacing="12" VerticalOptions="Center">
-                        <Label Text="Setup Conditional Order" FontSize="18" FontAttributes="Bold" />
-                        <Button
-                            Text="Auto-Fetch"
-                            Style="{StaticResource ChipButton}"
-                            HorizontalOptions="EndAndExpand" 
-                            Clicked="OnAutoFetchClicked"/>
-                    </HorizontalStackLayout>
+                    <!-- Sol kart: Setup Conditional Order -->
+                    <Frame Grid.Column="0"
+                           Padding="14"
+                           BackgroundColor="{DynamicResource SecondaryBackgroundColor}"
+                           BorderColor="{DynamicResource CardBorderColor}"
+                           CornerRadius="14"
+                           HasShadow="False">
+                        <Grid RowSpacing="10" ColumnSpacing="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
 
-                    <!-- Hisse Sembolü -->
-                    <Label Grid.Row="1" Grid.ColumnSpan="2" Text="Stock Symbol"  />
-                    <Picker
-                        Grid.Row="2" Grid.ColumnSpan="2"
-                        Title="Select a stock" SelectedIndexChanged="OnSymbolChanged">
-                        <Picker.Items>
-                            <x:String>AAPL</x:String>
-                            <x:String>MSFT</x:String>
-                            <x:String>NVDA</x:String>
-                            <x:String>TSLA</x:String>
-                        </Picker.Items>
-                    </Picker>
+                            <HorizontalStackLayout Grid.Row="0" Grid.ColumnSpan="2" Spacing="10" VerticalOptions="Center">
+                                <Label Text="Setup Conditional Order" FontSize="18" FontAttributes="Bold" />
+                                <Button Text="Auto-Fetch"
+                                        Style="{StaticResource ChipButton}"
+                                        HorizontalOptions="EndAndExpand"
+                                        Clicked="OnAutoFetchClicked"/>
+                            </HorizontalStackLayout>
 
-                    <!-- Tetik Fiyatı ve yukari asagi butonlari -->
-                    <Label Grid.Row="3" Grid.ColumnSpan="2" Text="Trigger Price" />
-                    <Grid Grid.Row="4" Grid.ColumnSpan="2" ColumnSpacing="8">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="44" />
-                            <ColumnDefinition Width="44" />
-                        </Grid.ColumnDefinitions>
+                            <Label Grid.Row="1" Grid.ColumnSpan="2" Text="Stock Symbol" />
+                            <Picker Grid.Row="2" Grid.ColumnSpan="2"
+                                    Title="Select a stock"
+                                    SelectedIndexChanged="OnSymbolChanged">
+                                <Picker.Items>
+                                    <x:String>AAPL</x:String>
+                                    <x:String>MSFT</x:String>
+                                    <x:String>NVDA</x:String>
+                                    <x:String>TSLA</x:String>
+                                </Picker.Items>
+                            </Picker>
 
-                        <Entry Grid.Column="0" Placeholder="135.00" Keyboard="Numeric" TextChanged="OnTriggerPriceTextChanged" />
+                            <Label Grid.Row="3" Grid.ColumnSpan="2" Text="Trigger Price" />
+                            <Grid Grid.Row="4" Grid.ColumnSpan="2" ColumnSpacing="8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="40" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
 
-                        <Button Grid.Column="1" Text="▲" Clicked="OnIncreaseTriggerClicked" />
-                        <Button Grid.Column="2" Text="▼" Clicked="OnDecreaseTriggerClicked"/>
-                    </Grid>
+                                <Entry Grid.Column="0" Placeholder="135.00" Keyboard="Numeric" TextChanged="OnTriggerPriceTextChanged" />
+                                <Button Grid.Column="1" Text="▲" Clicked="OnIncreaseTriggerClicked" />
+                                <Button Grid.Column="2" Text="▼" Clicked="OnDecreaseTriggerClicked"/>
+                            </Grid>
 
-                    <!-- Emir Tipi -->
-                    <Label Grid.Row="5" Grid.ColumnSpan="2" Text="Order Type" />
-                    <HorizontalStackLayout Grid.Row="6" Grid.ColumnSpan="2" Spacing="24">
-                        <HorizontalStackLayout Spacing="6">
-                            <RadioButton Content="Call Option" IsChecked="True" TextColor= "White" CheckedChanged="OnCallOptionCheckedChanged"/>
-                        </HorizontalStackLayout>
-                        <HorizontalStackLayout Spacing="6">
-                            <RadioButton Content="Put Option" TextColor= "White" CheckedChanged="OnPutOptionCheckedChanged"/>
-                        </HorizontalStackLayout>
-                    </HorizontalStackLayout>
+                            <Label Grid.Row="5" Grid.ColumnSpan="2" Text="Order Type" />
+                            <HorizontalStackLayout Grid.Row="6" Grid.ColumnSpan="2" Spacing="20">
+                                <HorizontalStackLayout Spacing="6">
+                                    <RadioButton Content="Call Option"
+                                                 IsChecked="True"
+                                                 TextColor="{DynamicResource PrimaryTextColor}"
+                                                 CheckedChanged="OnCallOptionCheckedChanged"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="6">
+                                    <RadioButton Content="Put Option"
+                                                 TextColor="{DynamicResource PrimaryTextColor}"
+                                                 CheckedChanged="OnPutOptionCheckedChanged"/>
+                                </HorizontalStackLayout>
+                            </HorizontalStackLayout>
 
-                    <!-- Strike ve Vade -->
-                    <Label Grid.Row="7" Grid.Column="0" Text="Strike Price" />
-                    <Label Grid.Row="7" Grid.Column="1" Text="Expiration" />
-                    <Picker Grid.Row="8" Grid.Column="0" Title="Strike" SelectedIndexChanged="OnStrikeChanged">
-                        <Picker.Items>
-                            <x:String>130</x:String>
-                            <x:String>135</x:String>
-                            <x:String>140</x:String>
-                        </Picker.Items>
-                    </Picker>
-                    <Picker Grid.Row="8" Grid.Column="1" Title="Exp" SelectedIndexChanged="OnExpirationChanged">
-                        <Picker.Items>
-                            <x:String>2025-09-20</x:String>
-                            <x:String>2025-10-18</x:String>
-                            <x:String>2025-11-15</x:String>
-                        </Picker.Items>
-                    </Picker>
+                            <Label Grid.Row="7" Grid.Column="0" Text="Strike Price" />
+                            <Label Grid.Row="7" Grid.Column="1" Text="Expiration" />
+                            <Picker Grid.Row="8" Grid.Column="0" Title="Strike" SelectedIndexChanged="OnStrikeChanged">
+                                <Picker.Items>
+                                    <x:String>130</x:String>
+                                    <x:String>135</x:String>
+                                    <x:String>140</x:String>
+                                </Picker.Items>
+                            </Picker>
+                            <Picker Grid.Row="8" Grid.Column="1" Title="Exp" SelectedIndexChanged="OnExpirationChanged">
+                                <Picker.Items>
+                                    <x:String>2025-09-20</x:String>
+                                    <x:String>2025-10-18</x:String>
+                                    <x:String>2025-11-15</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Sağ kart: Position + Stop Loss -->
+                    <Frame Grid.Column="1"
+                           Padding="14"
+                           BackgroundColor="{DynamicResource SecondaryBackgroundColor}"
+                           BorderColor="{DynamicResource CardBorderColor}"
+                           CornerRadius="14"
+                           HasShadow="False">
+                        <VerticalStackLayout Spacing="12">
+
+                            <Label Text="Position Size ($)" />
+                            <Entry Placeholder="500" Keyboard="Numeric" TextChanged="OnPositionTextChanged"/>
+
+                            <Grid ColumnSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Text="$2,000" Style="{StaticResource ChipButton}" Clicked="OnPositionPresetClicked"/>
+                                <Button Grid.Column="1" Text="$5,000" Style="{StaticResource ChipButton}" Clicked="OnPositionPresetClicked"/>
+                                <Button Grid.Column="2" Text="$10,000" Style="{StaticResource ChipButton}" Clicked="OnPositionPresetClicked"/>
+                            </Grid>
+
+                            <Label Text="Stop Loss ($)"/>
+                            <Entry Placeholder="130.00" Keyboard="Numeric" TextChanged="OnStopLossTextChanged"/>
+
+                            <Grid ColumnSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Text="$0.20" Style="{StaticResource ChipButton}" Clicked="OnStopLossPreset"/>
+                                <Button Grid.Column="1" Text="$0.50" Style="{StaticResource ChipButton}" Clicked="OnStopLossPreset"/>
+                                <Button Grid.Column="2" Text="$1.00" Style="{StaticResource ChipButton}" Clicked="OnStopLossPreset"/>
+                            </Grid>
+
+                        </VerticalStackLayout>
+                    </Frame>
                 </Grid>
-            </Frame>
 
-            <!-- Pozisyon ve Hazır Tutarlar -->
-            <VerticalStackLayout Spacing="10">
-                <Label Text="Position Size ($)" />
-                <Entry Placeholder="500" Keyboard="Numeric" TextChanged="OnPositionTextChanged"/>
-
-                <Grid ColumnSpacing="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Button Grid.Column="0" Text="$2,000" Style="{StaticResource ChipButton}" Clicked="OnPositionPresetClicked"/>
-                    <Button Grid.Column="1" Text="$5,000" Style="{StaticResource ChipButton}" Clicked="OnPositionPresetClicked"/>
-                    <Button Grid.Column="2" Text="$10,000" Style="{StaticResource ChipButton}" Clicked="OnPositionPresetClicked"/>
-                </Grid>
-            </VerticalStackLayout>
-
-            <!-- Stop Loss ve prim butonlari -->
-            <VerticalStackLayout Spacing="10">
-                <Label Text="Stop Loss ($)"/>
-                <Entry Placeholder="130.00" Keyboard="Numeric" TextChanged="OnStopLossTextChanged"/>
-
-                <Grid ColumnSpacing="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Button Grid.Column="0" Text="$0.20" Style="{StaticResource ChipButton}" Clicked="OnStopLossPreset"/>
-                    <Button Grid.Column="1" Text="$0.50" Style="{StaticResource ChipButton}" Clicked="OnStopLossPreset"/>
-                    <Button Grid.Column="2" Text="$1.00" Style="{StaticResource ChipButton}" Clicked="OnStopLossPreset"/>
-                </Grid>
-            </VerticalStackLayout>
-
-            <!-- Oluştur butonu -->
-            <Button
-                Text="Create Conditional Order"
-                BackgroundColor="{DynamicResource AccentGreen}"
-                TextColor="Black"
-                FontAttributes="Bold"
-                HeightRequest="52"
-                CornerRadius="14"
-                Margin="0,6,0,10" 
-                Clicked="OnCreateOrderClicked"/>
-        </VerticalStackLayout>
-    </ScrollView>
+                <!-- Alt CTA -->
+                <Button Grid.Row="1"
+                        Text="Create Conditional Order"
+                        BackgroundColor="{DynamicResource AccentGreen}"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        HeightRequest="50"
+                        CornerRadius="14"
+                        Margin="0,6,0,0"
+                        Clicked="OnCreateOrderClicked"/>
+            </Grid>
+        </Frame>
+    </Grid>
 </ContentPage>
